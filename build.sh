@@ -14,8 +14,8 @@ podman build $ARGS -t freeipa-tester-pre .
 #
 podman run $ARGS -i -t --name freeipa-tester --cap-add CAP_SYS_ADMIN \
            --hostname freeipa.example.org freeipa-tester-pre \
-       ipa-server-install --unattended --no-pkinit --realm EXAMPLE.ORG \
-                          --ds-password password --admin-password password
+       ipa-server-install --unattended --no-pkinit --no-ntp --no-host-dns \
+           --realm EXAMPLE.ORG --ds-password password --admin-password password
 podman commit $ARGS --change 'CMD []' freeipa-tester freeipa-tester
 
 # Clean up
