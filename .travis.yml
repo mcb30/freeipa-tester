@@ -1,0 +1,28 @@
+language: generic
+
+dist: bionic
+
+sudo: required
+
+addons:
+  apt:
+    sources:
+      - sourceline: 'ppa:projectatomic/ppa'
+    packages:
+      - podman
+      - slirp4netns
+
+before_install:
+  - sudo cp registries.conf /etc/containers/registries.conf
+  - sudo chown -R `id -u` /sys/fs/cgroup/systemd/user.slice/user-`id -u`.slice
+  - ./build.sh
+
+script:
+  - ./test.sh
+
+before_deploy:
+  - podman login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}" docker.io
+
+deploy:
+  - provider: script
+    script: podman push freeipa-tester ${TRAVIS_REPO_SLUG}
