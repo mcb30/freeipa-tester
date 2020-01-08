@@ -16,7 +16,7 @@ podman run $ARGS -i -t --name freeipa-tester --cap-add CAP_SYS_ADMIN \
            --hostname freeipa.example.org freeipa-tester-pre \
        "ipa-server-install --unattended --no-pkinit --no-ntp --no-host-dns \
                            --realm EXAMPLE.ORG --ds-password password \
-                           --admin-password password && \
+                           --admin-password password --idstart=42000000 && \
         echo password | kinit admin && \
         mkdir -p /var/kerberos/krb5/user/0/ && \
         echo -e 'password\npassword' | \
