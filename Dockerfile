@@ -13,3 +13,5 @@ RUN dnf update -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
 
 RUN systemctl mask auth-rpcgss-module.service && \
     systemctl disable var-lib-nfs-rpc_pipefs.mount
+
+COPY fix-syncrepl.ldif /etc/ipa/

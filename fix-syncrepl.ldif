@@ -1,0 +1,6 @@
+dn: cn=Retro Changelog Plugin,cn=plugins,cn=config
+changetype: modify
+delete: nsslapd-include-suffix
+-
+add: nsslapd-exclude-suffix
+nsslapd-exclude-suffix: o=ipaca

@@ -22,7 +22,9 @@ podman run $ARGS -i -t --name freeipa-tester --cap-add CAP_SYS_ADMIN \
         echo -e 'password\npassword' | \
              ipa-getkeytab -p admin -P \
                            -k /var/kerberos/krb5/user/0/client.keytab && \
-        systemctl mask nis-domainname.service"
+        systemctl mask nis-domainname.service && \
+        ldapmodify -D 'cn=Directory Manager' -w password \
+                   -f /etc/ipa/fix-syncrepl.ldif"
 podman commit $ARGS --change 'CMD []' freeipa-tester freeipa-tester
 
 # Clean up
