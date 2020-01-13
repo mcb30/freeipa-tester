@@ -8,6 +8,7 @@ RUN dnf update -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
 	openldap-clients \
 	python3-alembic \
 	python3-pyyaml \
+	python3-setuptools_scm \
 	python3-sqlalchemy \
     && dnf clean all
 
