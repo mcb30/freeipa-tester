@@ -1,7 +1,7 @@
 FreeIPA test data container
 ===========================
 
-[![Build Status](https://travis-ci.com/unipartdigital/freeipa-tester.svg?branch=master)](https://travis-ci.com/unipartdigital/freeipa-tester)
+[![Build Status](https://travis-ci.com/mcb30/freeipa-tester.svg?branch=master)](https://travis-ci.com/mcb30/freeipa-tester)
 
 This container provides a freshly installed FreeIPA server
 ``freeipa.example.org`` for the realm ``EXAMPLE.ORG``
@@ -10,7 +10,7 @@ It can be used for quick and easy experiments against a throwaway
 FreeIPA instance.  For example:
 
 ```
-podman run -i -t --rm -h freeipa.example.org unipartdigital/freeipa-tester sh
+podman run -i -t --rm -h freeipa.example.org mcb30/freeipa-tester sh
 ```
 
 will give you an interactive shell in which you can try out FreeIPA
@@ -47,10 +47,10 @@ illustrating the behaviour of FreeIPA.  For example, to create a
 FreeIPA user and capture the resulting LDAP data in LDIF format:
 
 ```
-podman run -i -t --rm -h freeipa.example.org unipartdigital/freeipa-tester \
+podman run -i -t --rm -h freeipa.example.org mcb30/freeipa-tester \
     "ipa user-add testuser --first Test --last User && \
      ldapsearch '(uid=testuser)'"
 ```
 
 The container is published on Docker Hub as
-[`unipartdigital/freeipa-tester`](https://hub.docker.com/r/unipartdigital/freeipa-tester/).
+[`mcb30/freeipa-tester`](https://hub.docker.com/r/mcb30/freeipa-tester/).
