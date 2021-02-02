@@ -1,0 +1,26 @@
+name: Build
+
+on:
+  push:
+  schedule:
+    - cron: '00 12 3 * *'
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Build
+        run: |
+          sudo ./build.sh
+      - name: Test
+        run: |
+          sudo ./test.sh
+      - name: Publish
+        run: |
+          sudo podman login -u "${{ secrets.DOCKER_USERNAME }}" \
+                            -p "${{ secrets.DOCKER_PASSWORD }}"
+          sudo podman push freeipa-tester "${GITHUB_REPOSITORY}"

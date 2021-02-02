@@ -1,7 +1,8 @@
 FreeIPA test data container
 ===========================
 
-[![Build Status](https://travis-ci.com/mcb30/freeipa-tester.svg?branch=master)](https://travis-ci.com/mcb30/freeipa-tester)
+[![Build](https://img.shields.io/github/workflow/status/mcb30/freeipa-tester/Build)](https://github.com/mcb30/freeipa-tester/actions?query=workflow%3ABuild+branch%3Amaster)
+[![Image](https://img.shields.io/docker/pulls/mcb30/freeipa-tester)](https://hub.docker.com/r/mcb30/freeipa-tester/)
 
 This container provides a freshly installed FreeIPA server
 ``freeipa.example.org`` for the realm ``EXAMPLE.ORG``

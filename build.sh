@@ -12,8 +12,9 @@ podman build $ARGS -t freeipa-tester-pre .
 # Install FreeIPA server.  This cannot be done via a RUN stage, since
 # it requires systemd to be running.
 #
-podman run $ARGS -i -t --name freeipa-tester --cap-add CAP_SYS_ADMIN \
-           --hostname freeipa.example.org freeipa-tester-pre \
+podman run $ARGS -i -t --systemd=always --cap-add CAP_SYS_ADMIN \
+                 --name freeipa-tester --hostname freeipa.example.org \
+                 freeipa-tester-pre \
        "ipa-server-install --unattended --no-pkinit --no-ntp --no-host-dns \
                            --realm EXAMPLE.ORG --ds-password password \
                            --admin-password password --idstart=42000000 && \
